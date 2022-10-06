@@ -1,0 +1,18 @@
+image: gcc
+
+build:
+  stage: build
+  script: 
+    - apt update && apt -y install make mingw-w64 gnuplot
+    - make
+    - make plot
+    - make volumenstrom
+  artifacts:
+    paths:
+      - build/beleg
+      - build/volumenstrom_Rohr_Links.data
+      - build/volumenstrom_Rohr_Rechts.data
+      - doc/beleg_druck.pdf
+      - doc/beleg_ux.pdf
+      - doc/beleg_uy.pdf
+      - doc/beleg_geschwindigkeitsvektor.pdf
